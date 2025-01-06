@@ -1,11 +1,13 @@
 from pytorch_generation import pred_class, to_list
 from neural_network import NeuralNetwork
 from test_data import test_data
+from sklearn import datasets
 
 neural = NeuralNetwork()
+neural.learning(datasets.load_iris())
 my_neural = list()
 for data in test_data:
-    my_neural.append(neural.generation(data))
+    my_neural.append(neural.generation_to_class(data))
 print(my_neural)
 
 pytorch_neural = to_list(pred_class)
