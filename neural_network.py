@@ -40,11 +40,19 @@ def log(x, n=1000):
     return log_x
 
 
+def log_fp(x):
+    return 1 / x
+
+
 def log_softmax(vector):
     out_vector = [e ** x for x in vector]
     summa = sum(out_vector)
     out_vector = [x / summa for x in out_vector]
     return [log(i) for i in out_vector]
+
+
+def softmax_fp(vector):
+    return [1 - x for x in log_softmax(vector)]
 
 
 def NegativeLogLikelihoodLoss(x, y):
