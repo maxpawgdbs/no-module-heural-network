@@ -9,6 +9,7 @@
 ```
 git clone https://github.com/maxpawgdbs/no-module-heural-network
 cd no-module-heural-network
+pip3 install -r requirements.txt
 python3 pytorch_learning.py
 python3 main.py
 ```
