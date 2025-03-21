@@ -12,3 +12,4 @@ pytorch.model
 *.xml
 *.iml
 ./__pycache__./
+__pycache__/
