@@ -1,9 +1,13 @@
 import torch
 from test_data import test_data
 
-model = torch.nn.Sequential(torch.load("pytorch.model", weights_only=False))
-model.eval()
-print("Pytorch Model Loaded")
+try:
+    model = torch.nn.Sequential(torch.load("pytorch.model", weights_only=False))
+    model.eval()
+    print("Pytorch Model Loaded")
+except FileNotFoundError:
+    print("Файл 'pytorch.model' не найден, сначала запустите файл pytorch_learning.py")
+    exit(0)
 
 tensor_test_data = torch.tensor(test_data, dtype=torch.float64)
 

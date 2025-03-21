@@ -8,10 +8,10 @@ neural.learning(datasets.load_iris())
 my_neural = list()
 for data in test_data:
     my_neural.append(neural.generation_to_class(data))
-print(my_neural)
+print("Результат работы самописной нейросети:", my_neural)
 
 pytorch_neural = to_list(pred_class)
-print(pytorch_neural)
+print("Результат работы нейросети на Pytorch:", pytorch_neural)
 t = 0
 f = 0
 for i in range(len(test_data)):
