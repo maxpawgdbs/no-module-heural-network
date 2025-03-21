@@ -35,5 +35,4 @@ for epoch in range(1, num_epochs + 1):
     optimizer.step()
     print(loss)
 torch.save(model, "pytorch.model")
-# print(lin1.weight, lin1.bias)
-# print(lin2.weight, lin2.bias)
+

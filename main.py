@@ -19,8 +19,5 @@ for i in range(len(test_data)):
         t += 1
     else:
         f += 1
-print(t, f)
-print(f"{round(t / (t + f) * 100, 2)}%")
-
-# from sklearn import datasets
-# print(datasets.load_iris())
+print(f"Совпадений: {t}, Отклонений: {f}")
+print(f"Процент совпадения: {round(t / (t + f) * 100, 2)}%")

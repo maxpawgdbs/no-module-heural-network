@@ -3,7 +3,7 @@ from test_data import test_data
 
 model = torch.nn.Sequential(torch.load("pytorch.model", weights_only=False))
 model.eval()
-print("loaded")
+print("Pytorch Model Loaded")
 
 tensor_test_data = torch.tensor(test_data, dtype=torch.float64)
 

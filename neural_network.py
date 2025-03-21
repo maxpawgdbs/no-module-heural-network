@@ -79,6 +79,7 @@ def get_random():
 
 class NeuralNetwork:
     def __init__(self):
+        print("Генерация начальных весов")
         self.lin1 = [[get_random() for i in range(4)] for j in range(4)]
         self.bias1 = [0 for i in range(4)]
         self.lin2 = [[get_random() for i in range(4)] for j in range(3)]
@@ -86,38 +87,34 @@ class NeuralNetwork:
 
 
     def learning(self, data, epochs=100, lr=0.01):
+        print("Начало обучения")
         for i in range(epochs):
             loss = self.get_nllloss(data)
-            print(i, loss)
+            print(f"Эпоха: {i}, Потеря: {loss}")
 
             for j in range(len(data["data"])):
                 x = data["data"][j]
                 y = data["target"][j]
 
-                # Прямой проход
                 z1 = sum_vectors(self.bias1, vector_x_matrix(x, self.lin1))
                 a1 = [tanh(v) for v in z1]
 
                 z2 = sum_vectors(self.bias2, vector_x_matrix(a1, self.lin2))
                 pred = [e ** v for v in log_softmax(z2)]
 
-                # Обратный проход
                 target = [0] * len(pred)
                 target[y] = 1
 
                 dL_dy = [pred[k] - target[k] for k in range(len(pred))]
 
-                # Обновление весов второго слоя
                 for k in range(len(self.lin2)):
                     for m in range(len(self.lin2[k])):
                         self.lin2[k][m] -= lr * dL_dy[k] * a1[m]
                     self.bias2[k] -= lr * dL_dy[k]
 
-                # Градиенты для первого слоя
                 dL_da1 = [sum(dL_dy[k] * self.lin2[k][m] for k in range(len(self.lin2))) for m in range(len(a1))]
                 dL_dz1 = [dL_da1[m] * tanh_fp(z1[m]) for m in range(len(a1))]
 
-                # Обновление весов первого слоя
                 for k in range(len(self.lin1)):
                     for m in range(len(self.lin1[k])):
                         self.lin1[k][m] -= lr * dL_dz1[k] * x[m]
