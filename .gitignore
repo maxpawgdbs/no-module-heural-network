@@ -7,7 +7,7 @@
 /dataSources/
 /dataSources.local.xml
 
-# .idea/
-# .gitignore
-# pytorch.model
-# *.xml
+.idea/
+.gitignore
+pytorch.model
+*.xml
