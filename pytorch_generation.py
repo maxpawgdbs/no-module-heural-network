@@ -1,7 +1,7 @@
 import torch
 from test_data import test_data
 
-model = torch.nn.Sequential(torch.load("pytorch.model"))
+model = torch.nn.Sequential(torch.load("pytorch.model", weights_only=False))
 model.eval()
 print("loaded")
 
